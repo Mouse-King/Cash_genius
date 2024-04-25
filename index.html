@@ -1,0 +1,65 @@
+<html lang="'en">
+    <head>
+        <meta charset="UTF-8"/>
+    </head>
+    <style>
+        span > img {
+            max-width: 356px !important;
+            max-height: 57px !important;
+        }
+    </style>
+    <body>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const urlParams = new URLSearchParams(window.location.search);
+                const entries = urlParams.entries();
+                subid = urlParams.get('subid');
+                var affiliate;
+                if (subid === 'yt') {
+                    console.log('Youtube');
+                    affiliate = {
+                        logo: './logo.png',
+                        is_affiliate: true,
+                        aid: '1515',
+                        cid: '5070',
+                        phone_cid: 'default',
+                    };
+                } else if (subid === 'dg') {
+                    console.log('Demand');
+                    affiliate = {
+                        logo: './logo.png',
+                        is_affiliate: true,
+                        aid: '1515',
+                        cid: '5071',
+                        phone_cid: 'default',
+                    };
+                } else {
+                    console.log('Demand')
+                    affiliate = {
+                        logo: './logo.png',
+                        is_affiliate: true,
+                        aid: '1515',
+                        cid: '5071',
+                        phone_cid: 'default',
+                    };
+                }
+        
+                for (const entry of entries) {
+                    if (entry[0] == 'aid') {
+                        affiliate.aid = entry[1];
+                    }
+                    if (entry[0] == 'cid') {
+                        affiliate.cid = entry[1];
+                    }
+                    if (entry[0] == 'phone_cid') {
+                        affiliate.phone_cid = entry[1];
+                    } 
+                    if (entry[0] != 'aid' && entry[0] != 'cid' && entry[0] != 'phone_cid') {
+                        affiliate[[entry[0]]] = entry[1];
+                    }
+                }
+            }); 
+        </script>
+        <script src='https://rapidfireform.s3.amazonaws.com/rapidfire.js'></script>
+    </body>
+</html>
